@@ -18,7 +18,7 @@ const RootNavigator = StackNavigator({
     screen: MovieDetail,
     navigationOptions: {
       headerTitleStyle: {
-        fontFamily: 'Aveir Next'
+        fontFamily: 'Avenir Next'
       }
     }
   }
