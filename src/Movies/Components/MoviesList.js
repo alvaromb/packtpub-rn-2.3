@@ -1,23 +1,23 @@
 /* @flow */
 
-import React, { Component } from 'react'
-import { Alert, StyleSheet, FlatList, View } from 'react-native'
-import { connect } from 'react-redux'
-import { getMovies, getMoviesDismiss } from '../Actions/GetMoviesActions'
+import React, { Component } from 'react';
+import { Alert, StyleSheet, FlatList, View } from 'react-native';
+import { connect } from 'react-redux';
+import { getMovies, getMoviesDismiss } from '../Actions/GetMoviesActions';
 
-import MovieCell from './MovieCell'
-import MovieInfo from './MovieInfo'
+import MovieCell from './MovieCell';
+import MovieInfo from './MovieInfo';
 
 class MoviesList extends Component<{}> {
   componentDidMount() {
-    this.props.dispatch(getMovies())
+    this.props.dispatch(getMovies());
   }
 
   _onPress = (movie: Object) => {
-    this.props.navigation.navigate('MovieDetail', movie)
-  }
+    this.props.navigation.navigate('MovieDetail', movie);
+  };
 
-  _keyExtractor = (item, index) => index
+  _keyExtractor = (item, index) => index;
 
   _renderItem = ({ item }) => {
     return (
@@ -28,8 +28,8 @@ class MoviesList extends Component<{}> {
         plot={item.plot}
         onPress={this._onPress}
       />
-    )
-  }
+    );
+  };
 
   componentDidUpdate() {
     if (this.props.movies.error) {
@@ -39,7 +39,7 @@ class MoviesList extends Component<{}> {
           text: 'Cancel',
           onPress: () => this.props.dispatch(getMoviesDismiss())
         }
-      ])
+      ]);
     }
   }
 
@@ -52,7 +52,7 @@ class MoviesList extends Component<{}> {
           keyExtractor={this._keyExtractor}
         />
       </View>
-    )
+    );
   }
 }
 
@@ -62,8 +62,8 @@ const styles = StyleSheet.create({
     paddingTop: 25,
     backgroundColor: '#F5FCFF'
   }
-})
+});
 
 export default connect(state => ({
   movies: state.movies
-}))(MoviesList)
+}))(MoviesList);
